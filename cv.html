@@ -3,260 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish - PCB Designer Engineer</title>
+    <title>Priyanka - Sales Executive Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <style>
-        body {
+        .light-mode {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #eef2f7, #f5f7fa);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
-        .section-title {
-            @apply text-3xl font-bold text-gray-800 mb-8 text-center;
+        .dark-mode {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #111827, #1f2937, #111827);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
-        .card {
-            @apply bg-white rounded-xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300;
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gradient-text {
+            background-image: linear-gradient(to right, #6366f1, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-hover {
+            /* Adjusted for 3D tilt effect */
+            transition: transform 0.1s ease, box-shadow 0.3s ease-out;
+            will-change: transform;
+        }
+        
+        /* New typing animation cursor */
+        .typing-cursor::after {
+            content: '|';
+            font-weight: 400;
+            animation: blink 1s step-end infinite;
+            color: #a78bfa;
+        }
+
+        @keyframes blink {
+            from, to { opacity: 0 }
+            50% { opacity: 1 }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-700">
+<body>
 
     <!-- Header & Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm dark:shadow-lg dark:shadow-black/20 sticky top-0 z-50 transition-transform duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Ashish</a>
-            <div class="hidden md:flex space-x-6">
-                <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-                <a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
-                <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
-                <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
-                <a href="#education" class="text-gray-600 hover:text-blue-600 transition-colors">Education</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+            <a href="#" class="text-2xl font-bold gradient-text">Priyanka</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">About</a>
+                <a href="#experience" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Experience</a>
+                <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Skills</a>
+                <a href="#education" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Education</a>
+                <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Contact</a>
+                <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 8.486a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
             </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            
+            <div class="flex items-center md:hidden">
+                <button id="theme-toggle-mobile" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5 mr-2">
+                    <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm-.707 8.486a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 dark:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
-            <a href="#about" class="block text-gray-600 hover:text-blue-600 py-2">About</a>
-            <a href="#experience" class="block text-gray-600 hover:text-blue-600 py-2">Experience</a>
-            <a href="#skills" class="block text-gray-600 hover:text-blue-600 py-2">Skills</a>
-            <a href="#projects" class="block text-gray-600 hover:text-blue-600 py-2">Projects</a>
-            <a href="#education" class="block text-gray-600 hover:text-blue-600 py-2">Education</a>
-            <a href="#contact" class="block text-gray-600 hover:text-blue-600 py-2">Contact</a>
+        <div id="mobile-menu" class="md:hidden hidden px-6 pb-4 space-y-2">
+            <a href="#about" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">About</a>
+            <a href="#experience" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Experience</a>
+            <a href="#skills" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Skills</a>
+            <a href="#education" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Education</a>
+            <a href="#contact" class="block text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">Contact</a>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-6 py-12 md:py-20">
 
         <!-- Hero Section -->
-        <section id="hero" class="text-center py-20">
-            <h1 class="text-5xl font-extrabold text-gray-900 mb-4">Ashish</h1>
-            <p class="text-xl text-blue-600 font-semibold mb-6">PCB Designer Engineer</p>
-            <p class="max-w-2xl mx-auto text-lg text-gray-600">
-                A dedicated and professional PCB Designer Engineer with a passion for tackling challenges and contributing to organizational goals with innovative techniques.
-            </p>
+        <section class="text-center min-h-[60vh] flex flex-col justify-center items-center">
+            <div class="max-w-3xl">
+                <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Dedicated Sales Professional</span>
+                <h1 id="hero-h1" class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mt-2 mb-4 h-20 md:h-36">&nbsp;</h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
+                    An ambitious and results-oriented Sales Executive with a passion for client relations and a drive to contribute to a challenging and creative team environment.
+                </p>
+                <div class="flex justify-center gap-4">
+                     <a href="#experience" class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition duration-300 text-lg transform hover:scale-105 shadow-lg hover:shadow-indigo-500/50">
+                        View My Experience
+                    </a>
+                    <a href="mailto:sainpihu26@gmail.com" class="bg-white dark:bg-gray-700 text-gray-800 dark:text-white px-6 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition duration-300 text-lg transform hover:scale-105 shadow-lg hover:shadow-gray-300 dark:hover:shadow-gray-800 border border-gray-200 dark:border-gray-600">
+                        Email Me
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20">
-            <h2 class="section-title">About Me</h2>
-            <div class="bg-white p-8 rounded-xl shadow-md">
-                <p class="text-lg leading-relaxed">
-                    I am a highly motivated engineering professional focused on Printed Circuit Board design. My objective is to leverage my skills in a dynamic organization where I can actively contribute, embrace challenges, and drive success through new techniques and hard work. I have a solid background in circuit design, component selection, and various communication protocols. My experience spans from research and development to production and service, providing me a holistic view of the product lifecycle.
-                </p>
+        <section id="about" class="py-20 section-fade-in">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1">
+                     <div class="p-1 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-xl">
+                        <img src="https://lh3.googleusercontent.com/d/1j-MJZjr_jtPitZLrWcfh1Q5u84XWwFTp" onerror="this.onerror=null;this.src='https://placehold.co/400x400/818cf8/ffffff?text=P';" alt="Priyanka" class="rounded-full bg-white dark:bg-gray-800 p-1 w-48 h-48 object-cover mx-auto">
+                     </div>
+                </div>
+                <div class="md:col-span-2">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">About Me</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        I am a dedicated professional looking to build a career in a dynamic, high-tech environment. My goal is to leverage my skills and experience to become a key player within a committed team, helping to drive success while continuously exploring my own potential.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        I thrive in challenging and creative settings and am always eager to learn and grow. My experience in sales has equipped me with strong communication and client-handling skills, which I am keen to apply to new opportunities.
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="py-20 bg-gray-100 -mx-6 px-6">
-             <h2 class="section-title">Work Experience</h2>
-             <div class="relative">
-                 <!-- Timeline line -->
-                 <div class="absolute left-1/2 -ml-px w-0.5 h-full bg-blue-200"></div>
-                 
-                 <div class="space-y-12">
-                     <!-- Timeline Item -->
-                     <div class="relative">
-                         <div class="md:flex md:items-center md:justify-end">
-                             <div class="md:w-1/2 md:pr-8">
-                                 <div class="card p-6">
-                                     <p class="text-sm text-gray-500 mb-1">Aug 2022 - Present</p>
-                                     <h3 class="text-xl font-bold text-gray-800">PCB Designer Engineer</h3>
-                                     <p class="text-blue-600 font-medium">Electrifuel Private Limited, Gurugram</p>
-                                     <p class="mt-2 text-gray-600">Specializing in I2C, UART, CAN, SPI, RF, and mixed-signal PCB Layouts.</p>
-                                 </div>
-                             </div>
-                             <div class="md:w-1/2 md:pl-8 md:flex md:justify-start"></div>
-                         </div>
-                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
-                     </div>
-                      <!-- Timeline Item -->
-                     <div class="relative">
-                         <div class="md:flex md:items-center">
-                            <div class="md:w-1/2 md:pr-8 md:flex md:justify-end"></div>
-                             <div class="md:w-1/2 md:pl-8">
-                                 <div class="card p-6">
-                                     <p class="text-sm text-gray-500 mb-1">Feb 2022 - Jun 2022</p>
-                                     <h3 class="text-xl font-bold text-gray-800">Research and Development (Internship)</h3>
-                                     <p class="text-blue-600 font-medium">NEIOT Technologies Pvt. Ltd., New Delhi</p>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
-                     </div>
-                     <!-- Other items... -->
-                      <div class="relative">
-                         <div class="md:flex md:items-center md:justify-end">
-                             <div class="md:w-1/2 md:pr-8">
-                                 <div class="card p-6">
-                                     <p class="text-sm text-gray-500 mb-1">Oct 2021 - Nov 2021</p>
-                                     <h3 class="text-xl font-bold text-gray-800">Thermal Power Plant Layout (Internship)</h3>
-                                     <p class="text-blue-600 font-medium">BHEL (Online)</p>
-                                 </div>
-                             </div>
-                             <div class="md:w-1/2 md:pl-8 md:flex md:justify-start"></div>
-                         </div>
-                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
-                     </div>
-                      <div class="relative">
-                         <div class="md:flex md:items-center">
-                            <div class="md:w-1/2 md:pr-8 md:flex md:justify-end"></div>
-                             <div class="md:w-1/2 md:pl-8">
-                                 <div class="card p-6">
-                                     <p class="text-sm text-gray-500 mb-1">Apr 2021 - Oct 2020</p>
-                                     <h3 class="text-xl font-bold text-gray-800">R&D, Service & Production Roles</h3>
-                                     <p class="text-blue-600 font-medium">Kumar Electronic Pvt.Ltd, Garhmukteshwar</p>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
-                     </div>
-                 </div>
+        <section id="experience" class="py-20 section-fade-in">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Work Experience</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-12">A timeline of my professional journey in sales and customer relations.</p>
+                <div class="relative border-l-2 border-indigo-200 dark:border-indigo-900 ml-6 md:ml-0">
+                    <!-- Experience Item 1 -->
+                    <div class="mb-10 ml-10">
+                        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-indigo-100 dark:bg-gray-800 rounded-full ring-8 ring-white dark:ring-gray-900 transition-transform duration-300 hover:scale-125">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-indigo-600 dark:text-indigo-400" viewBox="0 0 16 16"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/></svg>
+                        </span>
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-lg text-left card-hover hover:shadow-indigo-300 dark:hover:shadow-indigo-500/25">
+                            <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900 dark:text-white">Sales Executive</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">CREDIT Q, Noida (Current)</time>
+                            <p class="text-base font-normal text-gray-600 dark:text-gray-300">Currently working in a fast-paced sales role, focusing on client acquisition and management.</p>
+                        </div>
+                    </div>
+                    <!-- Experience Item 2 -->
+                    <div class="mb-10 ml-10">
+                        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-indigo-100 dark:bg-gray-800 rounded-full ring-8 ring-white dark:ring-gray-900 transition-transform duration-300 hover:scale-125">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-indigo-600 dark:text-indigo-400" viewBox="0 0 16 16"><path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h1Z"/><path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z"/></svg>
+                        </span>
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-lg text-left card-hover hover:shadow-indigo-300 dark:hover:shadow-indigo-500/25">
+                            <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900 dark:text-white">Sales Executive</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">Real Estate, Noida (2021 - 2023)</time>
+                            <p class="text-base font-normal text-gray-600 dark:text-gray-300">Gained two years of valuable experience in the competitive real estate market, handling client calls and sales processes from start to finish.</p>
+                        </div>
+                    </div>
+                    <!-- Experience Item 3 -->
+                    <div class="ml-10">
+                        <span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-indigo-100 dark:bg-gray-800 rounded-full ring-8 ring-white dark:ring-gray-900 transition-transform duration-300 hover:scale-125">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-indigo-600 dark:text-indigo-400" viewBox="0 0 16 16"><path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.28 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.28l2.257 1.794a1.745 1.745 0 0 1 .163 2.612l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.363-1.03-.038-2.137.703-2.877L1.885.511z"/></svg>
+                        </span>
+                         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-lg text-left card-hover hover:shadow-indigo-300 dark:hover:shadow-indigo-500/25">
+                            <h3 class="flex items-center mb-1 text-xl font-semibold text-gray-900 dark:text-white">Telecaller</h3>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">IDFC Bank, Anand Vihar (2020 - 2021)</time>
+                            <p class="text-base font-normal text-gray-600 dark:text-gray-300">Developed foundational skills in customer interaction and tele-sales within the banking sector.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 section-fade-in">
+             <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">My Skills</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-12">Key competencies I've developed through my experience and training.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="group bg-indigo-100 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300 text-lg font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-transform hover:scale-105"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-[-12deg] group-hover:scale-110" viewBox="0 0 16 16"><path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/></svg>Sales Executive</div>
+                    <div class="group bg-indigo-100 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300 text-lg font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-transform hover:scale-105"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-[-12deg] group-hover:scale-110" viewBox="0 0 16 16"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>Client Handling</div>
+                    <div class="group bg-indigo-100 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300 text-lg font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-transform hover:scale-105"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-[-12deg] group-hover:scale-110" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zM6 6h4v4H6V6z"/><path d="M11.646 1.646a.5.5 0 0 1 .708 0l1 1a.5.5 0 0 1 0 .708l-1 1a.5.5 0 0 1-.708-.708L12.293 3 11.646 2.354a.5.5 0 0 1 0-.708zm-7.292 0a.5.5 0 0 0-.708 0l-1 1a.5.5 0 0 0 0 .708l1 1a.5.5 0 0 0 .708-.708L3.707 3 4.354 2.354a.5.5 0 0 0 0-.708zM14 9.5a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 6 9.5V8a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1.5z"/></svg>Call Handling</div>
+                    <div class="group bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-lg font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-transform hover:scale-105"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-[-12deg] group-hover:scale-110" viewBox="0 0 16 16"><path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v7A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 13.5 3h-11zM2 4.5A.5.5 0 0 1 2.5 4h11a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-7z"/><path d="M11.5 6a.5.5 0 0 1 0 1H10a.5.5 0 0 1 0-1h1.5zM10 8a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5v-1A.5.5 0 0 1 5 8h5z"/></svg>Office Automation</div>
+                    <div class="group bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-lg font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-transform hover:scale-105"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-[-12deg] group-hover:scale-110" viewBox="0 0 16 16"><path d="M8.5 2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2a.5.5 0 0 1 .5-.5zm0 10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm3.5-10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm-7 0a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zM12 8a.5.5 0 0 1-.5-.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-8 0a.5.5 0 0 1-.5-.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5z"/><path d="M8 16a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8z"/></svg>Basic Computer</div>
+                    <div class="group bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-lg font-medium px-6 py-3 rounded-full flex items-center gap-2 transition-transform hover:scale-105"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="transition-transform duration-300 group-hover:rotate-[-12deg] group-hover:scale-110" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"/><path d="M0 2a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 1.252v12.496a1 1 0 0 1-1.399.908l-3.11-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V2zm1.5 0a.5.5 0 0 0 0 1v12a.5.5 0 0 0 .5.5h7.5a.5.5 0 0 0 .5-.5v-1.5a.5.5 0 0 1 1 0V14a.5.5 0 0 0 .5.5h1.386l2.114 1.057a.5.5 0 0 0 .801-.41V2.41a.5.5 0 0 0-.8-.41L12.5 3H12a.5.5 0 0 1-1 0V2H2.5a.5.5 0 0 0-.5.5z"/></svg>Bilingual</div>
+                </div>
              </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-20">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">PCB Design</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Circuit Design</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Reading Datasheets</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">I2C, UART, CAN, SPI</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">RF & Analog Layout</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Mixed-Signal PCB</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Electromagnetics</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Firmware Development</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Component Selection</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Basic C Programming</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Basic Python</div>
-                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Creative Thinking</div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20 bg-gray-100 -mx-6 px-6">
-            <h2 class="section-title">Projects</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">Battery Charger with Auto Cut-off</h3>
-                        <p class="text-gray-500 text-sm mb-3">Oct 2021 - Jan 2022</p>
-                        <p class="text-gray-600">Developed a battery charger circuit with protection features to automatically stop charging once the battery is full, preventing overcharging.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">Automatic Changeover Switch</h3>
-                        <p class="text-gray-500 text-sm mb-3">Sep 2020 - Dec 2021</p>
-                        <p class="text-gray-600">Designed a system to automatically switch between main power and a backup source, ensuring an uninterrupted power supply.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">Automatic Voltage Stabilizer</h3>
-                        <p class="text-gray-500 text-sm mb-3">Dec 2020 - May 2021</p>
-                        <p class="text-gray-600">Created a device to maintain a constant voltage level, protecting electrical appliances from voltage fluctuations.</p>
-                    </div>
-                </div>
-                 <div class="card">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-gray-800">Amazing City</h3>
-                        <p class="text-gray-500 text-sm mb-3">Aug 2019 - Nov 2019</p>
-                        <p class="text-gray-600">Contributed to a project focused on developing smart city solutions, likely involving sensor integration and data communication.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Education Section -->
-        <section id="education" class="py-20">
-            <h2 class="section-title">Education</h2>
-            <div class="max-w-3xl mx-auto">
-                 <div class="card p-6 mb-6">
-                    <h3 class="text-xl font-bold text-gray-800">Bachelor of Technology (B.Tech)</h3>
-                    <p class="text-blue-600 font-medium">Shri Mata Vaishno Devi University, Katra (J&K)</p>
-                    <p class="text-sm text-gray-500 mt-1">Aug 2018 - Aug 2022</p>
-                    <p class="mt-2">CGPA: 6.9/10</p>
-                </div>
-                 <div class="card p-6 mb-6">
-                    <h3 class="text-xl font-bold text-gray-800">Senior Secondary (XII)</h3>
-                    <p class="text-blue-600 font-medium">Chitrakoot Inter college, Karwi, Chitrakoot</p>
-                     <p class="text-sm text-gray-500 mt-1">Completed: Apr 2018</p>
-                </div>
-                 <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800">Secondary (X)</h3>
-                    <p class="text-blue-600 font-medium">Sarv Hitashi Inter College, Bhadsyana, Hapur</p>
-                    <p class="text-sm text-gray-500 mt-1">Completed: Apr 2016</p>
+        <section id="education" class="py-20 section-fade-in">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Education & Qualifications</h2>
+                 <p class="text-gray-600 dark:text-gray-400 mb-12">My academic background and certifications.</p>
+                <div class="grid md:grid-cols-2 gap-8 text-left">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-lg card-hover group hover:shadow-indigo-300 dark:hover:shadow-indigo-500/25">
+                        <div class="flex items-center gap-4 mb-2">
+                             <span class="flex items-center justify-center w-10 h-10 bg-indigo-100 dark:bg-gray-700 rounded-full transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-indigo-600 dark:text-indigo-400" viewBox="0 0 16 16"><path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .374 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46l-3.892-1.556z"/><path d="M4.5 0a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM6 1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5z"/><path d="M2 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zM2 7.288V5.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v1.788l-6 2.4-6-2.4zM1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5V6.712a1.5 1.5 0 0 0-.803-1.342L8.394 3.732a.5.5 0 0 0-.788 0L2.303 5.37A1.5 1.5 0 0 0 1 6.712V13.5z"/></svg>
+                             </span>
+                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Bachelor of Arts (B.A.)</h3>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-2 ml-14">CCS University, Meerut - 2021</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-lg card-hover group hover:shadow-indigo-300 dark:hover:shadow-indigo-500/25">
+                        <div class="flex items-center gap-4 mb-2">
+                             <span class="flex items-center justify-center w-10 h-10 bg-indigo-100 dark:bg-gray-700 rounded-full transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-indigo-600 dark:text-indigo-400" viewBox="0 0 16 16"><path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/><path d="M4.5 3h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zM4.5 6h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2.5 3h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5z"/></svg>
+                             </span>
+                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Diploma in Office Automation</h3>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-2 ml-14">RGCSM, New Delhi</p>
+                    </div>
+                     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-lg card-hover group hover:shadow-indigo-300 dark:hover:shadow-indigo-500/25">
+                         <div class="flex items-center gap-4 mb-2">
+                             <span class="flex items-center justify-center w-10 h-10 bg-indigo-100 dark:bg-gray-700 rounded-full transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-indigo-600 dark:text-indigo-400" viewBox="0 0 16 16"><path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.495v3.505A.5.5 0 0 1 9 15h-2a.5.5 0 0 1-.5-.5zm-4-3.468V7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v3.532a.5.5 0 0 1-.83.384l-1.5-1.032a.5.5 0 0 1 0-.768l1.5-1.032A.5.5 0 0 1 4.5 7.5v-1h-2v2.468a.5.5 0 0 1-.17.384l-1.5 1.032a.5.5 0 0 1-.83-.384zM13.5 11.032V7.5a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0-.5.5v3.532a.5.5 0 0 0 .83.384l1.5-1.032a.5.5 0 0 0 0-.768l-1.5-1.032a.5.5 0 0 0-.83.384v1h2V8.532a.5.5 0 0 0 .17-.384l1.5-1.032a.5.5 0 0 0 .83.384zM8 5.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-5-1a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm10 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0z"/></svg>
+                             </span>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Intermediate</h3>
+                         </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-2 ml-14">UP Board - 2018</p>
+                    </div>
+                     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-lg card-hover group hover:shadow-indigo-300 dark:hover:shadow-indigo-500/25">
+                         <div class="flex items-center gap-4 mb-2">
+                             <span class="flex items-center justify-center w-10 h-10 bg-indigo-100 dark:bg-gray-700 rounded-full transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-indigo-600 dark:text-indigo-400" viewBox="0 0 16 16"><path d="M9.213 1.011a.5.5 0 0 0-.426 0l-4 2.105a.5.5 0 0 0 0 .888l4 2.105a.5.5 0 0 0 .426 0l4-2.105a.5.5 0 0 0 0-.888l-4-2.105z"/><path d="M4.26 5.884a.5.5 0 0 0 0 .888l4 2.105a.5.5 0 0 0 .426 0l4-2.105a.5.5 0 0 0 0-.888l-4-2.105a.5.5 0 0 0-.426 0l-4 2.105zm0 3.192a.5.5 0 0 0 0 .888l4 2.105a.5.5 0 0 0 .426 0l4-2.105a.5.5 0 0 0 0-.888l-4-2.105a.5.5 0 0 0-.426 0l-4 2.105z"/></svg>
+                             </span>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">High School</h3>
+                         </div>
+                        <p class="text-gray-500 dark:text-gray-400 mb-2 ml-14">UP Board - 2016</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-gray-100 -mx-6 px-6">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="text-center max-w-xl mx-auto">
-                <p class="text-lg mb-6">I'm currently seeking new opportunities. Feel free to reach out if you have a role that might be a good fit, or if you just want to connect!</p>
-                <div class="flex justify-center items-center space-x-6">
-                     <a href="mailto:01ashishroy@gmail.com" class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg">
-                        Email: 01ashishroy@gmail.com
+        <section id="contact" class="py-20 bg-white dark:bg-gray-800 rounded-lg shadow-xl section-fade-in">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Let's Connect</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8">I'm open to new opportunities and collaborations. Feel free to reach out!</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8">
+                    <a href="mailto:sainpihu26@gmail.com" class="text-lg text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-3 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600 dark:text-indigo-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-8deg]"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>sainpihu26@gmail.com</span>
                     </a>
-                    <div class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-lg">
-                        Phone: +91 88991 31217
+                     <div class="flex items-center gap-3 text-lg text-gray-700 dark:text-gray-300 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600 dark:text-indigo-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-8deg]"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 1.95 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>7906021460</span>
                     </div>
+                    <a href="https://www.linkedin.com/in/priyanka-saini-09b677276?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" class="text-lg text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-3 group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600 dark:text-indigo-400 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-8deg]"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <span>LinkedIn</span>
+                    </a>
                 </div>
             </div>
         </section>
 
     </main>
-
+    
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Ashish. All Rights Reserved.</p>
+    <footer class="bg-transparent mt-20">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2024 Priyanka. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Theme toggle logic
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+        const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        const body = document.body;
+
+        const applyTheme = (theme) => {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                body.classList.add('dark-mode');
+                body.classList.remove('light-mode');
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+                themeToggleLightIconMobile.classList.remove('hidden');
+                themeToggleDarkIconMobile.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                body.classList.add('light-mode');
+                body.classList.remove('dark-mode');
+                themeToggleLightIcon.classList.add('hidden');
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIconMobile.classList.add('hidden');
+                themeToggleDarkIconMobile.classList.remove('hidden');
+            }
+        };
+
+        const toggleTheme = () => {
+            const isDarkMode = document.documentElement.classList.toggle('dark');
+            const theme = isDarkMode ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+            applyTheme(theme);
+        };
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleBtnMobile.addEventListener('click', toggleTheme);
+
+        // Set initial theme on page load
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else {
+            applyTheme(systemPrefersDark ? 'dark' : 'light');
+        }
+
+
+        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
-        // Close mobile menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Fade-in animations for sections on scroll
+        const sections = document.querySelectorAll('.section-fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Autohide header on scroll
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            // Hide header on scroll down, show on scroll up
+            if (lastScrollY < window.scrollY && window.scrollY > header.offsetHeight) {
+                header.classList.add('-translate-y-full');
+            } else {
+                header.classList.remove('-translate-y-full');
+            }
+            lastScrollY = window.scrollY;
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Typing effect
+            const typingHero = document.getElementById('hero-h1');
+            const textToType = "Hello, I'm ";
+            const nameSpanHTML = '<span class="gradient-text">Priyanka</span>';
+            typingHero.classList.add('typing-cursor');
+            let i = 0;
+
+            function typeWriter() {
+                if (i < textToType.length) {
+                    typingHero.textContent = textToType.substring(0, i + 1);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    typingHero.innerHTML = textToType + nameSpanHTML;
+                    typingHero.classList.remove('typing-cursor');
+                }
+            }
+            setTimeout(typeWriter, 500);
+
+            // 3D Tilt Effect on cards
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -15;
+                    const rotateY = ((x - centerX) / centerX) * 15;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                    card.style.zIndex = '10';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                    card.style.zIndex = '1';
+                });
+            });
+        });
+
     </script>
 </body>
 </html>
+

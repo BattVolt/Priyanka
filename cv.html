@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish - PCB Designer Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-8 text-center;
+        }
+        .card {
+            @apply bg-white rounded-xl shadow-md overflow-hidden transform hover:-translate-y-2 transition-transform duration-300;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Ashish</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
+                <a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors">Experience</a>
+                <a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a>
+                <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a>
+                <a href="#education" class="text-gray-600 hover:text-blue-600 transition-colors">Education</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4">
+            <a href="#about" class="block text-gray-600 hover:text-blue-600 py-2">About</a>
+            <a href="#experience" class="block text-gray-600 hover:text-blue-600 py-2">Experience</a>
+            <a href="#skills" class="block text-gray-600 hover:text-blue-600 py-2">Skills</a>
+            <a href="#projects" class="block text-gray-600 hover:text-blue-600 py-2">Projects</a>
+            <a href="#education" class="block text-gray-600 hover:text-blue-600 py-2">Education</a>
+            <a href="#contact" class="block text-gray-600 hover:text-blue-600 py-2">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-20">
+            <h1 class="text-5xl font-extrabold text-gray-900 mb-4">Ashish</h1>
+            <p class="text-xl text-blue-600 font-semibold mb-6">PCB Designer Engineer</p>
+            <p class="max-w-2xl mx-auto text-lg text-gray-600">
+                A dedicated and professional PCB Designer Engineer with a passion for tackling challenges and contributing to organizational goals with innovative techniques.
+            </p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <h2 class="section-title">About Me</h2>
+            <div class="bg-white p-8 rounded-xl shadow-md">
+                <p class="text-lg leading-relaxed">
+                    I am a highly motivated engineering professional focused on Printed Circuit Board design. My objective is to leverage my skills in a dynamic organization where I can actively contribute, embrace challenges, and drive success through new techniques and hard work. I have a solid background in circuit design, component selection, and various communication protocols. My experience spans from research and development to production and service, providing me a holistic view of the product lifecycle.
+                </p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-gray-100 -mx-6 px-6">
+             <h2 class="section-title">Work Experience</h2>
+             <div class="relative">
+                 <!-- Timeline line -->
+                 <div class="absolute left-1/2 -ml-px w-0.5 h-full bg-blue-200"></div>
+                 
+                 <div class="space-y-12">
+                     <!-- Timeline Item -->
+                     <div class="relative">
+                         <div class="md:flex md:items-center md:justify-end">
+                             <div class="md:w-1/2 md:pr-8">
+                                 <div class="card p-6">
+                                     <p class="text-sm text-gray-500 mb-1">Aug 2022 - Present</p>
+                                     <h3 class="text-xl font-bold text-gray-800">PCB Designer Engineer</h3>
+                                     <p class="text-blue-600 font-medium">Electrifuel Private Limited, Gurugram</p>
+                                     <p class="mt-2 text-gray-600">Specializing in I2C, UART, CAN, SPI, RF, and mixed-signal PCB Layouts.</p>
+                                 </div>
+                             </div>
+                             <div class="md:w-1/2 md:pl-8 md:flex md:justify-start"></div>
+                         </div>
+                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
+                     </div>
+                      <!-- Timeline Item -->
+                     <div class="relative">
+                         <div class="md:flex md:items-center">
+                            <div class="md:w-1/2 md:pr-8 md:flex md:justify-end"></div>
+                             <div class="md:w-1/2 md:pl-8">
+                                 <div class="card p-6">
+                                     <p class="text-sm text-gray-500 mb-1">Feb 2022 - Jun 2022</p>
+                                     <h3 class="text-xl font-bold text-gray-800">Research and Development (Internship)</h3>
+                                     <p class="text-blue-600 font-medium">NEIOT Technologies Pvt. Ltd., New Delhi</p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
+                     </div>
+                     <!-- Other items... -->
+                      <div class="relative">
+                         <div class="md:flex md:items-center md:justify-end">
+                             <div class="md:w-1/2 md:pr-8">
+                                 <div class="card p-6">
+                                     <p class="text-sm text-gray-500 mb-1">Oct 2021 - Nov 2021</p>
+                                     <h3 class="text-xl font-bold text-gray-800">Thermal Power Plant Layout (Internship)</h3>
+                                     <p class="text-blue-600 font-medium">BHEL (Online)</p>
+                                 </div>
+                             </div>
+                             <div class="md:w-1/2 md:pl-8 md:flex md:justify-start"></div>
+                         </div>
+                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
+                     </div>
+                      <div class="relative">
+                         <div class="md:flex md:items-center">
+                            <div class="md:w-1/2 md:pr-8 md:flex md:justify-end"></div>
+                             <div class="md:w-1/2 md:pl-8">
+                                 <div class="card p-6">
+                                     <p class="text-sm text-gray-500 mb-1">Apr 2021 - Oct 2020</p>
+                                     <h3 class="text-xl font-bold text-gray-800">R&D, Service & Production Roles</h3>
+                                     <p class="text-blue-600 font-medium">Kumar Electronic Pvt.Ltd, Garhmukteshwar</p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white"></div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">PCB Design</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Circuit Design</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Reading Datasheets</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">I2C, UART, CAN, SPI</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">RF & Analog Layout</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Mixed-Signal PCB</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Electromagnetics</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Firmware Development</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Component Selection</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Basic C Programming</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Basic Python</div>
+                <div class="bg-white p-4 rounded-lg shadow-md hover:bg-blue-100 transition-colors">Creative Thinking</div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="section-title">Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Battery Charger with Auto Cut-off</h3>
+                        <p class="text-gray-500 text-sm mb-3">Oct 2021 - Jan 2022</p>
+                        <p class="text-gray-600">Developed a battery charger circuit with protection features to automatically stop charging once the battery is full, preventing overcharging.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Automatic Changeover Switch</h3>
+                        <p class="text-gray-500 text-sm mb-3">Sep 2020 - Dec 2021</p>
+                        <p class="text-gray-600">Designed a system to automatically switch between main power and a backup source, ensuring an uninterrupted power supply.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Automatic Voltage Stabilizer</h3>
+                        <p class="text-gray-500 text-sm mb-3">Dec 2020 - May 2021</p>
+                        <p class="text-gray-600">Created a device to maintain a constant voltage level, protecting electrical appliances from voltage fluctuations.</p>
+                    </div>
+                </div>
+                 <div class="card">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-gray-800">Amazing City</h3>
+                        <p class="text-gray-500 text-sm mb-3">Aug 2019 - Nov 2019</p>
+                        <p class="text-gray-600">Contributed to a project focused on developing smart city solutions, likely involving sensor integration and data communication.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="py-20">
+            <h2 class="section-title">Education</h2>
+            <div class="max-w-3xl mx-auto">
+                 <div class="card p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Bachelor of Technology (B.Tech)</h3>
+                    <p class="text-blue-600 font-medium">Shri Mata Vaishno Devi University, Katra (J&K)</p>
+                    <p class="text-sm text-gray-500 mt-1">Aug 2018 - Aug 2022</p>
+                    <p class="mt-2">CGPA: 6.9/10</p>
+                </div>
+                 <div class="card p-6 mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Senior Secondary (XII)</h3>
+                    <p class="text-blue-600 font-medium">Chitrakoot Inter college, Karwi, Chitrakoot</p>
+                     <p class="text-sm text-gray-500 mt-1">Completed: Apr 2018</p>
+                </div>
+                 <div class="card p-6">
+                    <h3 class="text-xl font-bold text-gray-800">Secondary (X)</h3>
+                    <p class="text-blue-600 font-medium">Sarv Hitashi Inter College, Bhadsyana, Hapur</p>
+                    <p class="text-sm text-gray-500 mt-1">Completed: Apr 2016</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-100 -mx-6 px-6">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="text-center max-w-xl mx-auto">
+                <p class="text-lg mb-6">I'm currently seeking new opportunities. Feel free to reach out if you have a role that might be a good fit, or if you just want to connect!</p>
+                <div class="flex justify-center items-center space-x-6">
+                     <a href="mailto:01ashishroy@gmail.com" class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors text-lg">
+                        Email: 01ashishroy@gmail.com
+                    </a>
+                    <div class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-lg">
+                        Phone: +91 88991 31217
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Ashish. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
